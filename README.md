@@ -35,8 +35,26 @@ ESP32: Bluetooth ve WiFi özelliği olan, düşük maliyetli ve düşük güçl�
 
 ---
 ## Test ve Uygulama
- Arduino IDE üzerinde geliştirdiğim projemde hedefim MPU6050 sensörü ile sarsıntı ölçmek ve elde ettiğim sarsıntı bilgisini ESP32’nin WiFi modülü ile Adafruit’e iletmekti. Sarsıntı tespitini, sensörün Gyro özelliğinden aldım. Sensörden gelen gyro verilerini belirli bir aralığın üzerinde olduğu durumda sistem tarafından algılanması için offset değerleri belirledim. Offset değerlerim pos_offset ve neg_offset olarak ikiye ayırdım. Pos_offset için bu değerim +1 iken neg_offset için bu değeri -1 olarak verdim. Kütüphane olarak <TinyMPU6050.h> kütüphanesini kullandım. Bu kütüphaneye ait metotlardan projemde yararlandım.
-  GyroX, GyroY, GyroZ değerlerim pos_offset ve neg_offset değerlerinin dışında bir değer aldığında sistem “SARSINTI” mesajını ekrana yazdırmakta ve aynı zamanda breadboard üzerindeki led ile kullanıcıya uyarı vermektedir. 
+Arduino IDE üzerinde geliştirdiğim bu projede temel amacım, MPU6050 sensörünü kullanarak sarsıntıları algılamak ve elde edilen sarsıntı bilgisini ESP32'nin WiFi modülü aracılığıyla Adafruit platformuna iletmektir.
+
+Sarsıntı tespiti, MPU6050 sensörünün Gyroscope (Gyro) özelliğinden elde edilen veriler kullanılarak gerçekleştirilmektedir.
+
+Sensörden alınan gyro verilerinin belirli bir aralığın dışına çıkması durumunda sistemin sarsıntıyı algılayabilmesi için offset değerleri belirledim. Bu değerleri pos_offset ve neg_offset olmak üzere iki farklı değişken üzerinden tanımladım.
+
+pos_offset = +1
+neg_offset = -1
+
+Projede sensör verilerinin okunması ve işlenmesi için TinyMPU6050.h kütüphanesini kullandım. Kütüphaneye ait metotlardan yararlanarak X, Y ve Z eksenlerindeki gyro verilerini takip ettim.
+
+GyroX, GyroY ve GyroZ değerlerinden herhangi birinin belirlediğim pozitif veya negatif offset sınırlarının dışına çıkması durumunda sistem sarsıntıyı algılamaktadır.
+
+Sarsıntı algılandığında:
+
+Seri monitöre "SARSINTI" mesajı yazdırılmaktadır.
+Breadboard üzerinde bulunan kırmızı LED yakılarak kullanıcıya görsel uyarı verilmektedir.
+ESP32'nin WiFi modülü aracılığıyla sarsıntı bilgisi Adafruit platformuna iletilmektedir.
+
+Bu sayede hem fiziksel LED uyarısı hem de internet üzerinden uzaktan bildirim sağlayan bir sarsıntı algılama sistemi geliştirilmiştir. 
  
 ##### Titreşim Olmadığında
 <img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/f4c3f38f-55ce-402e-ac1c-a28025bce0dd" />
