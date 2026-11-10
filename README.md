@@ -37,7 +37,10 @@ ESP32: Bluetooth ve WiFi özelliği olan, düşük maliyetli ve düşük güçl�
 ## Test ve Uygulama
  Arduino IDE üzerinde geliştirdiğim projemde hedefim MPU6050 sensörü ile sarsıntı ölçmek ve elde ettiğim sarsıntı bilgisini ESP32’nin WiFi modülü ile Adafruit’e iletmekti. Sarsıntı tespitini, sensörün Gyro özelliğinden aldım. Sensörden gelen gyro verilerini belirli bir aralığın üzerinde olduğu durumda sistem tarafından algılanması için offset değerleri belirledim. Offset değerlerim pos_offset ve neg_offset olarak ikiye ayırdım. Pos_offset için bu değerim +1 iken neg_offset için bu değeri -1 olarak verdim. Kütüphane olarak <TinyMPU6050.h> kütüphanesini kullandım. Bu kütüphaneye ait metotlardan projemde yararlandım.
   GyroX, GyroY, GyroZ değerlerim pos_offset ve neg_offset değerlerinin dışında bir değer aldığında sistem “SARSINTI” mesajını ekrana yazdırmakta ve aynı zamanda breadboard üzerindeki led ile kullanıcıya uyarı vermektedir. 
+ 
 ##### Titreşim Olmadığında
 <img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/f4c3f38f-55ce-402e-ac1c-a28025bce0dd" />
-#### Titreşim Olduğunda
+
+##### Titreşim Olduğunda
 <img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/e1ead6b3-9f63-44fe-8316-f373f7d2a6d6" />
+ 
